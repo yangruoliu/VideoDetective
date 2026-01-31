@@ -125,7 +125,6 @@ python scripts/test_run.py \
 
 For each run, you should get:
 
-- **Belief visualization**: `output/<video_id>_belief.png`
 - **Full results**: `output/<video_id>_results.json` (includes prediction, optional GT, and `debug_info`)
 
 ## Core API
