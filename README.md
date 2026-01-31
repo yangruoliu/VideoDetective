@@ -9,7 +9,7 @@ Instead of a one-shot query-to-video retrieval, VideoDetective maintains a **glo
 
 This repository contains a runnable demo script: `scripts/test_run.py`.
 
-## Contents
+## 📚 Contents
 
 - [Overview](#overview)
   - [Motivation](#motivation)
@@ -26,9 +26,9 @@ This repository contains a runnable demo script: `scripts/test_run.py`.
 - [Core API](#core-api)
 - [Citation](#citation)
 
-## Overview
+## 🧭 Overview
 
-### Motivation
+### 🎯 Motivation
 
 Long-video understanding is hard for modern MLLMs because **the context window is limited**: you cannot feed dense frames from an entire long video. Many existing “clue localization” methods are *query-only* (unidirectional query → video search). This can miss the fact that a video is not a bag of independent frames: it has **coherent temporal dynamics** and **intrinsic inter-segment correlations**.
 
@@ -36,7 +36,7 @@ VideoDetective is motivated by a simple principle:
 
 - Use sparse observations to **estimate a global relevance distribution** over the whole video, rather than restarting from scratch when an early guess is wrong.
 
-### Key ideas
+### 💡 Key ideas
 
 - **Spatio-Temporal Affinity Graph**: chunk the video into semantic segments (nodes), connect them with edges from **visual similarity** and **temporal proximity**.
 - **Hypothesis–Verification–Refinement**:
@@ -45,24 +45,25 @@ VideoDetective is motivated by a simple principle:
   - **Refinement**: diffuse sparse scores over the graph to update a **global belief field**.
 - **Evidence packaging**: select a compact evidence set (frames + optional text evidence) for final answering.
 
-### Framework
+### 🧩 Framework
 
 ![Figure 1. Overview of the VideoDetective framework.](images/figure1_final_final.png)
 
-## Results
+## 📈 Results
+
 VideoDetective consistently enhances various MLLM across different architectures and parameter scales
 ![Figure 2. Performance improvements brought by VideoDetective.](images/figure2_VideoDetective.png)
 
-## Installation
+## 🛠️ Installation
 
-### Requirements
+### ✅ Requirements
 
 - **Python**: recommended 3.9+
 - **ffmpeg**: required for audio extraction if ASR is enabled
   - macOS: `brew install ffmpeg`
   - Ubuntu/Debian: `sudo apt install ffmpeg`
 
-### Install dependencies
+### 📦 Install dependencies
 
 ```bash
 python -m venv .venv
@@ -70,7 +71,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Configuration
+## ⚙️ Configuration
 
 1) Copy the template:
 
@@ -107,9 +108,9 @@ Notes:
   - `VIDEODETECTIVE_AUTH_HEADER_NAME`
   - `VIDEODETECTIVE_AUTH_PREFIX`
 
-## Inference
+## 🚀 Inference
 
-### Quick start (single video)
+### ⚡ Quick start (single video)
 
 ```bash
 python scripts/test_run.py \
@@ -121,13 +122,13 @@ python scripts/test_run.py \
   --total_budget 32
 ```
 
-### Outputs
+### 🗂️ Outputs
 
 For each run, you should get:
 
 - **Full results**: `output/<video_id>_results.json` (includes prediction, optional GT, and `debug_info`)
 
-## Core API
+## 🧪 Core API
 
 Minimal usage in Python:
 
@@ -145,12 +146,12 @@ print(result.answer)
 # result.debug_info contains debugging artifacts such as belief history.
 ```
 
-## Citation
+## ✒️ Citation
 
 ```bibtex
 @misc{yang2026videodetective,
   title = {VideoDetective: Clue Hunting via both Extrinsic Query and Intrinsic Relevance for Long Video Understanding},
-  author = {Yang Ruoliu and Wu, Chu and Shan Caifeng and He Ran and Fu Chaoyou},
+  author = {Yang , Ruoliu and Wu, Chu and Shan , Caifeng and He , Ran and Fu , Chaoyou},
   arxiv={}
   year = {2026}
 }
