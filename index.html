@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VideoDetective</title>
+    <meta
+      name="description"
+      content="VideoDetective: Clue Hunting via both Extrinsic Query and Intrinsic Relevance for Long Video Understanding."
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <div class="brand">
+          <div class="brand__title">VideoDetective</div>
+          <div class="brand__subtitle">See Less but Know More</div>
+        </div>
+        <nav class="nav">
+          <a href="#overview">Overview</a>
+          <a href="#framework">Framework</a>
+          <a href="#results">Results</a>
+          <a href="#quickstart">Quick Start</a>
+          <a href="#citation">Citation</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="hero__left">
+            <h1>Clue hunting for long video understanding</h1>
+            <p class="lead">
+              <strong>VideoDetective</strong> integrates <strong>extrinsic query relevance</strong>
+              with <strong>intrinsic inter-segment affinity</strong> for effective clue hunting in
+              long-video question answering under limited context windows. It models the video as a
+              visual–temporal affinity graph and performs a Hypothesis–Verification–Refinement loop
+              to obtain a global relevance distribution from sparse observations.
+            </p>
+            <div class="hero__cta">
+              <a class="btn btn--primary" href="https://github.com/yangruoliu/VideoDetective">GitHub Repo</a>
+              <a class="btn btn--ghost" href="#quickstart">Run the Demo</a>
+            </div>
+            <div class="hero__chips">
+              <span class="chip">long video understanding</span>
+              <span class="chip">video question answering</span>
+              <span class="chip">multimodal large language models</span>
+            </div>
+          </div>
+          <div class="hero__right">
+            <div class="card">
+              <div class="card__title">Repository</div>
+              <div class="card__body">
+                <div class="kv">
+                  <div class="kv__k">Code</div>
+                  <div class="kv__v"><a href="https://github.com/yangruoliu/VideoDetective">yangruoliu/VideoDetective</a></div>
+                </div>
+                <div class="kv">
+                  <div class="kv__k">Entry</div>
+                  <div class="kv__v"><code>scripts/test_run.py</code></div>
+                </div>
+                <div class="kv">
+                  <div class="kv__k">Pipeline</div>
+                  <div class="kv__v"><code>src/pipeline.py</code></div>
+                </div>
+                <div class="kv">
+                  <div class="kv__k">Config</div>
+                  <div class="kv__v"><code>.env</code> / <code>.env.example</code></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview" class="section">
+        <div class="container">
+          <h2>Overview</h2>
+          <div class="grid grid--2">
+            <div class="panel">
+              <h3>Motivation</h3>
+              <p>
+                Long video understanding remains challenging for multimodal large language models
+                (MLLMs) due to limited context windows, which necessitate identifying sparse
+                query-relevant video segments. However, existing methods predominantly localize clues
+                based solely on the query, overlooking the video’s intrinsic structure and varying
+                relevance across segments.
+              </p>
+            </div>
+            <div class="panel">
+              <h3>Key ideas</h3>
+              <ul>
+                <li>
+                  <strong>Visual–temporal affinity graph</strong> built from visual similarity and
+                  temporal proximity
+                </li>
+                <li>
+                  <strong>Hypothesis–Verification–Refinement loop</strong> with relevance propagation
+                  to unseen segments, yielding a global relevance distribution
+                </li>
+                <li>
+                  <strong>Sparse observation</strong> for localizing critical segments used for final
+                  answering
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="framework" class="section section--alt">
+        <div class="container">
+          <h2>Framework</h2>
+          <p class="muted">Figure 1. Overview of the VideoDetective framework.</p>
+          <div class="figure">
+            <img src="./images/figure1_final_final.png" alt="VideoDetective framework overview (Figure 1)" />
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="section">
+        <div class="container">
+          <h2>Results</h2>
+          <p class="muted">Figure 2. Performance improvements brought by VideoDetective.</p>
+          <div class="figure">
+            <img src="./images/figure2_VideoDetective.png" alt="VideoDetective performance improvements (Figure 2)" />
+          </div>
+        </div>
+      </section>
+
+      <section id="quickstart" class="section section--alt">
+        <div class="container">
+          <h2>Quick Start</h2>
+          <div class="grid grid--2">
+            <div class="panel">
+              <h3>Install</h3>
+              <pre><code>python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt</code></pre>
+              <h3>Configure</h3>
+              <pre><code>cp .env.example .env
+# then edit .env and set:
+# VIDEODETECTIVE_API_KEY
+# VIDEODETECTIVE_BASE_URL
+# VIDEODETECTIVE_VLM_MODEL</code></pre>
+            </div>
+            <div class="panel">
+              <h3>Run demo</h3>
+              <pre><code>python scripts/test_run.py \
+  --video_path /path/to/video.mp4 \
+  --question "What is the man doing?" \
+  --options "A. Running, B. Walking, C. Sitting, D. Standing" \
+  --output_dir output \
+  --max_steps 10 \
+  --total_budget 32</code></pre>
+              <p class="muted">
+                Outputs: <code>output/&lt;video_id&gt;_belief.png</code> and
+                <code>output/&lt;video_id&gt;_results.json</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="citation" class="section">
+        <div class="container">
+          <h2>Citation</h2>
+          <pre><code>@misc{yang2026videodetective,
+  title  = {VideoDetective: Clue Hunting via both Extrinsic Query and Intrinsic Relevance for Long Video Understanding},
+  author = {Yang, Ruoliu and Wu, Chu and Shan, Caifeng and He, Ran and Fu, Chaoyou},
+  year   = {2026}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="muted">© 2026 VideoDetective</div>
+        <div class="muted">Hosted on GitHub Pages.</div>
+      </div>
+    </footer>
+  </body>
+</html>
+

@@ -1,11 +1,10 @@
 # VideoDetective
 
-**VideoDetective** is a *plug-and-play* inference framework for **long-video multiple-choice question answering**. It localizes sparse, query-critical “clue” segments by combining:
+**VideoDetective** is a *plug-and-play* inference framework for **long-video multiple-choice question answering**.
 
-- **Extrinsic query relevance** (what the question asks for), and
-- **Intrinsic video structure** (how segments relate to each other via visual similarity + temporal continuity).
+**Keywords**: long video understanding, video question answering, multimodal large language models
 
-Instead of a one-shot query-to-video retrieval, VideoDetective maintains a **global belief field** over video segments and iteratively refines it via a **Hypothesis–Verification–Refinement** loop. This enables *“See Less but Know More”* under limited context / observation budgets.
+VideoDetective localizes sparse, query-relevant clue segments by integrating **extrinsic query relevance** with **intrinsic inter-segment affinity** for effective clue hunting under limited context windows.
 
 This repository contains a runnable demo script: `scripts/test_run.py`.
 
@@ -26,36 +25,36 @@ This repository contains a runnable demo script: `scripts/test_run.py`.
 - [Core API](#core-api)
 - [Citation](#citation)
 
+<a id="overview"></a>
 ## 🧭 Overview
 
+<a id="motivation"></a>
 ### 🎯 Motivation
 
-Long-video understanding is hard for modern MLLMs because **the context window is limited**: you cannot feed dense frames from an entire long video. Many existing “clue localization” methods are *query-only* (unidirectional query → video search). This can miss the fact that a video is not a bag of independent frames: it has **coherent temporal dynamics** and **intrinsic inter-segment correlations**.
+Long video understanding remains challenging for multimodal large language models (MLLMs) due to limited context windows, which necessitate identifying sparse query-relevant video segments. However, existing methods predominantly localize clues based solely on the query, overlooking the video’s intrinsic structure and varying relevance across segments. Motivated by this, VideoDetective jointly leverages the query and intrinsic inter-segment correlations to model a query-relevance distribution over the entire video under a limited observation budget (“See Less but Know More”).
 
-VideoDetective is motivated by a simple principle:
-
-- Use sparse observations to **estimate a global relevance distribution** over the whole video, rather than restarting from scratch when an early guess is wrong.
-
+<a id="key-ideas"></a>
 ### 💡 Key ideas
 
-- **Spatio-Temporal Affinity Graph**: chunk the video into semantic segments (nodes), connect them with edges from **visual similarity** and **temporal proximity**.
-- **Hypothesis–Verification–Refinement**:
-  - **Hypothesis**: pick the next anchor segment (active sampling).
-  - **Verification**: “observe” the anchor with a VLM (plus optional ASR) and score relevance.
-  - **Refinement**: diffuse sparse scores over the graph to update a **global belief field**.
-- **Evidence packaging**: select a compact evidence set (frames + optional text evidence) for final answering.
+- **Visual–temporal affinity graph**: divide a video into segments and represent them as a visual–temporal affinity graph built from visual similarity and temporal proximity.
+- **Hypothesis–Verification–Refinement loop**: estimate relevance scores of observed segments to the query and propagate them to unseen segments, yielding a global relevance distribution that guides localization of the most critical segments for final answering with sparse observation.
 
+<a id="framework"></a>
 ### 🧩 Framework
 
 ![Figure 1. Overview of the VideoDetective framework.](images/figure1_final_final.png)
 
+<a id="results"></a>
 ## 📈 Results
 
-VideoDetective consistently enhances various MLLM across different architectures and parameter scales
+VideoDetective consistently achieves substantial gains across a wide range of mainstream MLLMs.
+
 ![Figure 2. Performance improvements brought by VideoDetective.](images/figure2_VideoDetective.png)
 
+<a id="installation"></a>
 ## 🛠️ Installation
 
+<a id="requirements"></a>
 ### ✅ Requirements
 
 - **Python**: recommended 3.9+
@@ -63,6 +62,7 @@ VideoDetective consistently enhances various MLLM across different architectures
   - macOS: `brew install ffmpeg`
   - Ubuntu/Debian: `sudo apt install ffmpeg`
 
+<a id="install-dependencies"></a>
 ### 📦 Install dependencies
 
 ```bash
@@ -71,6 +71,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+<a id="configuration"></a>
 ## ⚙️ Configuration
 
 1) Copy the template:
@@ -108,8 +109,10 @@ Notes:
   - `VIDEODETECTIVE_AUTH_HEADER_NAME`
   - `VIDEODETECTIVE_AUTH_PREFIX`
 
+<a id="inference"></a>
 ## 🚀 Inference
 
+<a id="quick-start-single-video"></a>
 ### ⚡ Quick start (single video)
 
 ```bash
@@ -122,12 +125,15 @@ python scripts/test_run.py \
   --total_budget 32
 ```
 
+<a id="outputs"></a>
 ### 🗂️ Outputs
 
 For each run, you should get:
 
+- **Belief visualization**: `output/<video_id>_belief.png`
 - **Full results**: `output/<video_id>_results.json` (includes prediction, optional GT, and `debug_info`)
 
+<a id="core-api"></a>
 ## 🧪 Core API
 
 Minimal usage in Python:
@@ -146,6 +152,7 @@ print(result.answer)
 # result.debug_info contains debugging artifacts such as belief history.
 ```
 
+<a id="citation"></a>
 ## ✒️ Citation
 
 ```bibtex
