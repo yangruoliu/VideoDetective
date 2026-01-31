@@ -1,0 +1,43 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+# Keep .env.example for documentation
+!.env.example
+
+# Output directory (runtime data)
+output/
+
+# Local models (too large for git/GitHub)
+models/
+
+# Video embedding cache files (generated at runtime)
+*_feats_*.npy
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# macOS
+.DS_Store
+._*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Virtual environments
+venv/
+.venv/
