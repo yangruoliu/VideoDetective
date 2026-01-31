@@ -8,6 +8,9 @@
 # Output directory (runtime data)
 output/
 
+# GitHub Pages build output (if you later add tooling)
+site/
+
 # Local models (too large for git/GitHub)
 models/
 
