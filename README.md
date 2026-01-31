@@ -50,7 +50,7 @@ VideoDetective is motivated by a simple principle:
 ![Figure 1. Overview of the VideoDetective framework.](images/figure1_final_final.png)
 
 ## Results
-
+VideoDetective consistently enhances various MLLM across different architectures and parameter scales
 ![Figure 2. Performance improvements brought by VideoDetective.](images/figure2_VideoDetective.png)
 
 ## Installation
@@ -150,9 +150,9 @@ print(result.answer)
 
 ```bibtex
 @misc{yang2026videodetective,
-  title        = {VideoDetective: Clue Hunting via both Extrinsic Query and Intrinsic Relevance for Long Video Understanding},
+  title = {VideoDetective: Clue Hunting via both Extrinsic Query and Intrinsic Relevance for Long Video Understanding},
   author = {Yang Ruoliu and Wu, Chu and Shan Caifeng and He Ran and Fu Chaoyou},
   arxiv={}
-  year         = {2026}
+  year = {2026}
 }
 ```
