@@ -152,7 +152,7 @@ print(result.answer)
 @misc{yang2026videodetective,
   title = {VideoDetective: Clue Hunting via both Extrinsic Query and Intrinsic Relevance for Long Video Understanding},
   author = {Yang , Ruoliu and Wu, Chu and Shan , Caifeng and He , Ran and Fu , Chaoyou},
-  arxiv={}
+  arxiv={},
   year = {2026}
 }
 ```
