@@ -1,5 +1,10 @@
 # VideoDetective
 
+[![ArXiv](https://img.shields.io/badge/Arxiv-Paper-b31b1b.svg)](https://arxiv.org)
+[![Task](https://img.shields.io/badge/Task-VideoQA-blue.svg)]()
+[![Project Page](https://img.shields.io/badge/Web-Project_Page-yellow.svg)](https://yangruoliu.github.io/VideoDetective)
+
+
 **VideoDetective** is a *plug-and-play* inference framework for **long-video multiple-choice question answering**.
 
 **Keywords**: long video understanding, video question answering, multimodal large language models
@@ -130,7 +135,6 @@ python scripts/test_run.py \
 
 For each run, you should get:
 
-- **Belief visualization**: `output/<video_id>_belief.png`
 - **Full results**: `output/<video_id>_results.json` (includes prediction, optional GT, and `debug_info`)
 
 <a id="core-api"></a>
