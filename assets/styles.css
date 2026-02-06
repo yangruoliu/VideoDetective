@@ -1,5 +1,5 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
   --bg: #ffffff;
@@ -20,9 +20,11 @@
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Clean Sans Pairing */
+  --font-sans: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
   --max-width: 860px;
-  /* Slightly narrower for better reading experience */
 }
 
 * {
@@ -156,6 +158,7 @@ pre code {
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: var(--shadow-sm);
+  font-family: var(--font-sans);
 }
 
 .more-research-btn:hover {
@@ -201,6 +204,7 @@ pre code {
   font-size: 0.9rem;
   border-radius: 8px;
   text-align: left;
+  font-family: var(--font-sans);
 }
 
 .dropdown-content a:hover {
@@ -227,6 +231,14 @@ pre code {
   margin-top: 1rem;
 }
 
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .title-main {
   font-weight: 800;
   font-size: 3.5rem;
@@ -235,6 +247,15 @@ pre code {
   -webkit-text-fill-color: transparent;
   line-height: 1.1;
   letter-spacing: -0.03em;
+  font-family: var(--font-sans);
+}
+
+.title-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+  /* Ensure no text fill properties are inherited if any */
+  -webkit-text-fill-color: initial;
+  background: none;
 }
 
 .title-sub {
@@ -243,6 +264,7 @@ pre code {
   color: var(--text-light);
   max-width: 780px;
   line-height: 1.4;
+  font-family: var(--font-sans);
 }
 
 .authors-list {
@@ -295,6 +317,7 @@ pre code {
   gap: 8px;
   transition: all 0.2s ease;
   box-shadow: var(--shadow);
+  font-family: var(--font-sans);
 }
 
 .btn-link:hover {
