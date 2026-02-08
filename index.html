@@ -7,53 +7,14 @@
   <title>VideoDetective: Clue Hunting for Long Video Understanding</title>
   <meta name="description"
     content="VideoDetective: Clue Hunting via both Extrinsic Query and Intrinsic Relevance for Long Video Understanding." />
-  <link rel="stylesheet" href="./assets/styles.css?v=2.5" />
-  <style>
-    /* Inline fallback for Dropdown to ensure it works immediately */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
+  <link rel="stylesheet" href="./assets/styles.css?v=4.1" />
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      right: 0;
-      background-color: #ffffff;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 100;
-      border-radius: 8px;
-      padding: 5px 0;
-      border: 1px solid #eee;
-    }
-
-    .dropdown-content a {
-      color: #333;
-      padding: 10px 16px;
-      text-decoration: none;
-      display: block;
-      font-size: 0.9rem;
-      text-align: left;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
-      color: #4a90e2;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .dropdown-toggle {
-      cursor: pointer;
-    }
-  </style>
   <!-- Optional: Add Google Fonts for better typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -113,84 +74,255 @@
       </div>
     </header>
 
-    <!-- Abstract / Overview -->
-    <section id="overview">
-      <div class="abstract-box">
-        <h2 style="margin-top:0;">Abstract</h2>
-        <p class="abstract-text">
-          Long video understanding remains challenging for multimodal large language models (MLLMs) due to limited
-          context windows, which necessitate identifying sparse query-relevant video segments. However, existing methods
-          predominantly localize clues based solely on the query, overlooking the video’s intrinsic structure and
-          varying relevance across segments.
+    <!-- Introduction / Overview -->
+    <section id="introduction">
+      <div class="content-card">
+        <h2 style="text-align: center; margin-top: 0; border: none;">Introduction</h2>
+        <p class="introduction-text">
+          <strong>VideoDetective</strong> is a plug-and-play inference framework for long-video understanding that
+          integrates <strong>extrinsic query relevance</strong> with <strong>intrinsic video structure</strong>.
         </p>
-        <p class="abstract-text">
-          <strong>VideoDetective</strong> integrates <strong>extrinsic query relevance</strong> with <strong>intrinsic
-            inter-segment affinity</strong> for effective clue hunting. It models the video as a visual–temporal
-          affinity graph and performs a Hypothesis–Verification–Refinement loop to obtain a global relevance
-          distribution from sparse observations.
+        <p class="introduction-text">
+          By modeling the video as a <strong>Spatio-Temporal Affinity Graph</strong>, it performs an iterative
+          <strong>Hypothesis-Verification-Refinement</strong> loop to propagate relevance signals from sparse
+          observations to the entire video. This allows the model to "See Less but Know More", accurately localizing
+          critical clues for complex reasoning under limited context budgets.
         </p>
       </div>
-
-      <h3>Key Ideas</h3>
-      <ul class="key-ideas-list">
-        <li>
-          <strong>Combine Extrinsic query and Intrinsic Relevance:</strong> Understanding long video driven by not only
-          extrinsic query but also the video's intrinsic structure,
-          achieve "See Less but Know More".
-        </li>
-        <li>
-          <strong>Visual–Temporal Affinity Graph:</strong> Built from visual similarity and temporal proximity to model
-          video structure and quantify the similarity between video segments.
-        </li>
-        <li>
-          <strong>Hypothesis–Verification–Refinement Loop:</strong> Estimates relevance scores and propagates them to
-          unseen segments, enabling global understanding from sparse observations.
-        </li>
-      </ul>
     </section>
 
     <!-- Framework -->
     <section id="framework">
       <h2>Framework</h2>
-      <div class="figure-container">
-        <img src="./images/figure1_final_final.png" alt="VideoDetective Framework" class="figure-img" />
-        <p class="figure-caption">Figure 1. Overview of the VideoDetective framework.</p>
+      <div class="content-card">
+        <div class="figure-container" style="margin: 0;">
+          <img src="./images/figure1_final_final.png" alt="VideoDetective Framework" class="figure-img" />
+          <p class="figure-caption">
+            <strong>Figure 1. Overview of the VideoDetective Framework.</strong><br>
+            Given a video and a query, we (1) construct a spatio-temporal affinity graph; (2) iteratively observe sparse
+            segments and propagate relevance via a global belief field; (3) aggregate a compact multimodal evidence set
+            for the final answer.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Results -->
+    <!-- Results: Generalization -->
     <section id="results">
       <h2>Results</h2>
-      <div class="figure-container">
-        <img src="./images/figure2_VideoDetective.png" alt="VideoDetective Results" class="figure-img" />
-        <p class="figure-caption">Figure 2. Performance improvements brought by VideoDetective.</p>
+      <div class="content-card">
+        <h3>Generalization across Backbones</h3>
+        <div class="figure-container" style="margin: 0;">
+          <img src="./images/figure2_VideoDetective.png" alt="VideoDetective Results" class="figure-img" />
+          <p class="figure-caption">
+            <strong>Figure 2. Performance improvements across different backbones.</strong><br>
+            VideoDetective consistently enhances various multimodal large language models (e.g., Qwen, LLaVA, InternVL)
+            across different architectures and parameter scales, demonstrating its plug-and-play capability.
+          </p>
+        </div>
+      </div>
+
+      <!-- Comparison with SOTA (Table 2) -->
+      <div class="content-card">
+        <h3>Comparison with State-of-the-Art</h3>
+        <p>
+          VideoDetective achieves state-of-the-art performance across multiple long-video benchmarks.
+        </p>
+        <div class="table-container">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Param</th>
+                <th>Frames</th>
+                <th>VideoMME <br><small>(Long w/o sub)</small></th>
+                <th>LVBench <br><small>(Test)</small></th>
+                <th>MLVU <br><small>(Test)</small></th>
+                <th>LongVideoBench <br><small>(Val)</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Proprietary -->
+              <tr style="background-color: #f9fafb;">
+                <td colspan="7" style="text-align:left; font-weight:600; color:#475569;">Proprietary Models</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">GPT-4o</td>
+                <td>-</td>
+                <td>384</td>
+                <td>65.3</td>
+                <td>48.9</td>
+                <td>54.9</td>
+                <td>66.7</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Gemini-1.5-Pro</td>
+                <td>-</td>
+                <td>256</td>
+                <td>67.4</td>
+                <td>33.1</td>
+                <td>53.8</td>
+                <td>64.0</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">SeedVL-1.5</td>
+                <td>20B(A)</td>
+                <td>32</td>
+                <td>63.1</td>
+                <td>46.1</td>
+                <td>54.9</td>
+                <td>63.8</td>
+              </tr>
+
+              <!-- Open Source (< 30B) -->
+              <tr style="background-color: #f9fafb;">
+                <td colspan="7" style="text-align:left; font-weight:600; color:#475569;">Open-Source Models (&lt; 30B)
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">LongVITA-16k</td>
+                <td>14B</td>
+                <td>64</td>
+                <td>54.7</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">LongVILA</td>
+                <td>7B</td>
+                <td>1fps</td>
+                <td>53.0</td>
+                <td>-</td>
+                <td>-</td>
+                <td>57.1</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">LLaVA-OneVision</td>
+                <td>7B</td>
+                <td>-</td>
+                <td>46.7</td>
+                <td>-</td>
+                <td>47.2</td>
+                <td>56.4</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">LLaVA-Video</td>
+                <td>7B</td>
+                <td>512</td>
+                <td>52.9</td>
+                <td>43.1</td>
+                <td>-</td>
+                <td>58.2</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">VideoXL</td>
+                <td>7B</td>
+                <td>1fps</td>
+                <td>52.3</td>
+                <td>42.9</td>
+                <td>45.5</td>
+                <td>50.7</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Qwen2.5-VL</td>
+                <td>7B</td>
+                <td>128</td>
+                <td>53.9</td>
+                <td>36.9</td>
+                <td>45.5</td>
+                <td>51.0</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Qwen3-VL</td>
+                <td>8B</td>
+                <td>32</td>
+                <td>50.2</td>
+                <td>41.1</td>
+                <td>50.1</td>
+                <td>58.9</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">InternVL-2.5</td>
+                <td>8B</td>
+                <td>32</td>
+                <td>50.8</td>
+                <td>39.9</td>
+                <td>52.8</td>
+                <td>59.2</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">VITA-1.5</td>
+                <td>7B</td>
+                <td>16</td>
+                <td>-</td>
+                <td>37.1</td>
+                <td>-</td>
+                <td>53.6</td>
+              </tr>
+              <tr class="highlight-row">
+                <td style="text-align: left;"><strong>VideoDetective (Qwen3-VL)</strong></td>
+                <td>8B</td>
+                <td>32</td>
+                <td class="best-score">55.6</td>
+                <td class="best-score">43.2</td>
+                <td class="best-score">56.3</td>
+                <td class="best-score">60.2</td>
+              </tr>
+
+              <!-- Open Source (>= 30B) -->
+              <tr style="background-color: #f9fafb;">
+                <td colspan="7" style="text-align:left; font-weight:600; color:#475569;">Open-Source Models (&ge; 30B)
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Qwen2.5-VL</td>
+                <td>72B</td>
+                <td>128</td>
+                <td>64.6</td>
+                <td>47.4</td>
+                <td>53.8</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">LLaVA-Video</td>
+                <td>72B</td>
+                <td>64</td>
+                <td>70.3</td>
+                <td>46.1</td>
+                <td>-</td>
+                <td>63.9</td>
+              </tr>
+              <tr class="highlight-row">
+                <td style="text-align: left;"><strong>VideoDetective (SeedVL-1.5)</strong></td>
+                <td>20B(A)</td>
+                <td>32</td>
+                <td class="best-score">65.6</td>
+                <td class="best-score">51.3</td>
+                <td class="best-score">63.8</td>
+                <td class="best-score">67.9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="figure-caption" style="text-align: center;">
+          <strong>Table 1.</strong> Performance comparison on challenging long-video benchmarks (VideoMME, LVBench,
+          MLVU, LongVideoBench).
+        </p>
       </div>
     </section>
 
-    <!-- Example (Placeholder) -->
+    <!-- Example -->
     <section id="example">
-      <h2>Example</h2>
-      <div class="figure-container">
-        <img src="./images/example_white.png" alt="VideoDetective Example" class="figure-img" />
-        <p class="figure-caption">Figure 3. Example of VideoDetective.</p>
+      <h2>Qualitative Example</h2>
+      <div class="content-card">
+        <div class="figure-container" style="margin: 0;">
+          <img src="./images/example_white_v2.png" alt="VideoDetective Example" class="figure-img" />
+          <p class="figure-caption">
+            <strong>Figure 3. Active Inference Example.</strong>
+          </p>
+        </div>
       </div>
-    </section>
-
-    <!-- Quick Start (Simplified) -->
-    <section id="quickstart">
-      <h2>Quick Start</h2>
-      <p>You can quickly test VideoDetective using our provided scripts.</p>
-
-
-
-      <h3>Run Demo</h3>
-      <pre><code>python scripts/test_run.py \
-  --video_path /path/to/video.mp4 \
-  --question "What is the man doing?" \
-  --options "A. Running, B. Walking, C. Sitting, D. Standing" \
-  --output_dir output \
-  --max_steps 10 \
-  --total_budget 32</code></pre>
     </section>
 
     <!-- Citation -->
