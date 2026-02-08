@@ -60,7 +60,7 @@ VideoDetective consistently achieves substantial gains across a wide range of ma
 <a id="example"></a>
 ## 🖼️ Example
 
-![Figure 3. Example of VideoDetective.](images/example.png)
+![Figure 3. Example of VideoDetective.](images/example_white.png)
 
 <a id="installation"></a>
 ## 🛠️ Installation
