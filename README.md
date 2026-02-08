@@ -56,12 +56,12 @@ Long video understanding remains challenging for multimodal large language model
 VideoDetective consistently achieves substantial gains across a wide range of mainstream MLLMs.
 
 ![Figure 2. Performance improvements brought by VideoDetective.](images/figure2_VideoDetective.png)
- 
+
 <a id="example"></a>
 ## 🖼️ Example
- 
+
 ![Figure 3. Example of VideoDetective.](images/example.png)
- 
+
 <a id="installation"></a>
 ## 🛠️ Installation
 
