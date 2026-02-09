@@ -743,6 +743,8 @@ section:nth-of-type(5) {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+  background-color: white;
+  /* Ensure white background for transparent PNGs */
 }
 
 .figure-caption {
