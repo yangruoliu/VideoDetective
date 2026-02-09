@@ -4,8 +4,7 @@
 [![Task](https://img.shields.io/badge/Task-VideoQA-blue.svg)]()
 [![Project Page](https://img.shields.io/badge/Web-Project_Page-yellow.svg)](https://yangruoliu.github.io/VideoDetective)
 
-
-**VideoDetective** is a *plug-and-play* inference framework for **long-video question answering**.
+**VideoDetective** is a plug-and-play inference framework for long-video understanding that integrates extrinsic query relevance with intrinsic video structure.
 <a id="framework"></a>
 ### 🧩 Framework
 
@@ -13,7 +12,7 @@
 
 **Keywords**: long video understanding, video question answering, multimodal large language models
 
-VideoDetective localizes sparse, query-relevant clue segments by integrating **extrinsic query relevance** with **intrinsic inter-segment affinity** for effective clue hunting under limited context windows.
+By modeling the video as a Spatio-Temporal Affinity Graph, it performs an iterative Hypothesis-Verification-Refinement loop to propagate relevance signals from sparse observations to the entire video. This allows the model to "See Less but Know More", accurately localizing critical clues for complex reasoning under limited context budgets.
 
 This repository contains a runnable demo script: `scripts/test_run.py`.
 
