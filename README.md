@@ -7,6 +7,8 @@
 
 **VideoDetective** is a *plug-and-play* inference framework for **long-video multiple-choice question answering**.
 
+![Figure 1. Overview of the VideoDetective framework.](images/figure1_final_final.png)
+
 **Keywords**: long video understanding, video question answering, multimodal large language models
 
 VideoDetective localizes sparse, query-relevant clue segments by integrating **extrinsic query relevance** with **intrinsic inter-segment affinity** for effective clue hunting under limited context windows.
@@ -48,7 +50,6 @@ Long video understanding remains challenging for multimodal large language model
 <a id="framework"></a>
 ### 🧩 Framework
 
-![Figure 1. Overview of the VideoDetective framework.](images/figure1_final_final.png)
 
 <a id="results"></a>
 ## 📈 Results

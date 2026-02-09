@@ -53,10 +53,77 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.6;
   /* Slightly tighter line-height */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 80px;
+  /* Space for fixed navbar */
+}
+
+html {
+  scroll-padding-top: 80px;
+  /* Offset for fixed navbar */
+}
+
+/* Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  /* Glassmorphism background */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  padding: 0.8rem 0;
+  transition: all 0.3s ease;
+}
+
+.nav-container {
+  max-width: 1200px;
+  /* Match or slightly exceed main container */
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  /* Elegant serif font */
+  font-weight: 800;
+  font-size: 1.6rem;
+  /* Slightly larger */
+  text-decoration: none;
+  background: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
+  /* Blue to Purple Gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  /* Vertically align text and button */
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4b5563;
+  /* Slate-600 */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
 }
 
 a {
@@ -243,27 +310,32 @@ section:nth-of-type(5) {
 }
 
 .more-research-btn {
-  background-color: var(--bg-card);
+  background-color: transparent;
+  /* Changed to transparent for navbar */
   color: var(--text);
-  padding: 8px 18px;
-  /* Slightly smaller button */
+  padding: 6px 14px;
+  /* Slightly smaller padding */
   border-radius: 9999px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  /* Smaller font */
   font-weight: 600;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  border: 1px solid var(--border);
+  gap: 6px;
+  border: 1px solid #e5e7eb;
+  /* Light border */
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: var(--font-heading);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
+  /* Remove shadow */
 }
 
 .more-research-btn:hover {
-  border-color: var(--text-lighter);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+  background-color: #f8fafc;
 }
 
 .dropdown-content {
@@ -398,8 +470,10 @@ section:nth-of-type(5) {
 
 /* Authors & Institutions */
 .authors-list {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-top: 1.5rem;
+  font-weight: 500;
   line-height: 1.6;
 }
 
@@ -410,10 +484,95 @@ section:nth-of-type(5) {
   display: inline-block;
 }
 
-.authors-list sup {
-  color: var(--primary);
+.institutions-list {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.institution-name {
+  display: block;
+}
+
+/* Buttons */
+.link-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background-color: #1e293b;
+  /* Dark Slate */
+  color: white;
+  text-decoration: none;
+  border-radius: 9999px;
+  /* Pill shape */
   font-weight: 600;
-  margin-left: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-size: 1rem;
+  font-family: var(--font-body);
+  border: 1px solid transparent;
+}
+
+.btn-link:hover {
+  background-color: #334155;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-icon {
+  font-size: 1.25em;
+}
+
+/* Table Highlights */
+/* Table Highlights */
+.highlight-row {
+  background-color: #f0f9ff !important;
+  /* Very soft blue tint */
+}
+
+.highlight-row td {
+  border-bottom: 2px solid #bae6fd !important;
+  /* Slightly distinct border */
+  color: #0f172a !important;
+  /* Changed to Black (Slate-900) */
+  font-weight: 600;
+}
+
+/* Best score bolding */
+.best-score {
+  font-weight: 800;
+  color: #0f172a !important;
+  /* Changed to Black (Slate-900) */
+  /* Purple highlight removed as requested */
+}
+
+/* Institution Colors */
+.inst-1 {
+  color: #2563eb !important;
+  /* Blue for Inst 1 */
+  font-weight: 700;
+}
+
+.inst-2 {
+  color: #e11d48 !important;
+  /* Rose/Red for Inst 2 */
+  font-weight: 700;
+}
+
+.authors-list sup,
+.institutions-list sup {
+  margin-left: 2px;
+  font-weight: 700;
 }
 
 .institutions-list {
@@ -423,9 +582,16 @@ section:nth-of-type(5) {
   margin-bottom: 2rem;
 }
 
-.institution-name {
-  margin: 0 10px;
-  display: inline-block;
+.nav-logo {
+  font-family: 'Playfair Display', serif !important;
+  /* Force elegant serif font */
+  font-weight: 800;
+  font-size: 1.6rem;
+  text-decoration: none;
+  background: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
 }
 
 /* Action Buttons */
@@ -486,16 +652,30 @@ section:nth-of-type(5) {
   font-size: 1.2rem;
   line-height: 1.8;
   color: #334155;
-  text-align: center;
-  /* Centered as requested */
-  max-width: 800px;
-  margin: 0 auto;
+  /* Justify for cleaner block appearance */
+  text-align: justify;
+  max-width: 1000px;
+  /* Increased width to reduce line count */
+  margin: 0 auto 2rem;
+
+  /* Floating Card Style */
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  padding: 2rem;
+  /* Ample padding */
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.introduction-text:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
 }
 
 .introduction-text strong {
-  color: #0f172a;
-  font-weight: 700;
-  color: var(--primary);
+  color: #000000;
+  font-weight: 800;
 }
 
 
@@ -538,15 +718,31 @@ section:nth-of-type(5) {
 
 /* Figures */
 .figure-container {
-  margin: 2rem 0;
+  margin: 2rem auto;
   text-align: center;
+  /* Floating Card Style */
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  /* Subtle shadow */
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 1000px;
+  /* Constrain width for card look */
+}
+
+.figure-container:hover {
+  transform: translateY(-5px);
+  /* Lift effect */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  /* Deeper shadow on hover */
 }
 
 .figure-img {
   max-width: 100%;
   height: auto;
-  border-radius: 12px;
-  /* Image inside card doesn't need huge shadow, card has it */
+  border-radius: 8px;
 }
 
 .figure-caption {
@@ -555,7 +751,7 @@ section:nth-of-type(5) {
   font-size: 0.95em;
   font-family: var(--font-body);
   font-weight: 500;
-  max-width: 800px;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -564,12 +760,27 @@ section:nth-of-type(5) {
 /* Comparison Table */
 .table-container {
   overflow-x: auto;
-  margin: 2rem 0;
+  margin: 2rem auto;
+  /* Floating Card Style for Table */
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 1000px;
+}
+
+.table-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
 }
 
 .comparison-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  /* Changed for border-radius */
+  border-spacing: 0;
   font-size: 0.95rem;
   text-align: center;
 }

@@ -8,35 +8,51 @@
   <meta name="description"
     content="VideoDetective: Clue Hunting via both Extrinsic Query and Intrinsic Relevance for Long Video Understanding." />
   <link rel="icon" href="./images/logo.png" type="image/png">
-  <link rel="stylesheet" href="./assets/styles.css?v=5.8" />
+  <link rel="stylesheet" href="./assets/styles.css?v=8.2" />
 
   <!-- Optional: Add Google Fonts for better typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap"
     rel="stylesheet">
 </head>
 
 <body>
 
-  <div class="container">
-    <!-- Top Navigation -->
-    <nav class="top-nav">
-      <div class="dropdown">
-        <button class="more-research-btn dropdown-toggle">
-          <span>More Research</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <div class="dropdown-content">
-          <a href="https://video-mme.github.io/home_page.html" target="_blank">Video-MME</a>
-          <a href="https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models" target="_blank">Awesome-MLLM</a>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">VideoDetective</a>
+      <div class="nav-links">
+        <a href="#introduction">Introduction</a>
+        <a href="#framework">Framework</a>
+        <a href="#results">Results</a>
+        <a href="#example">Example</a>
+        <a href="#citation">Citation</a>
+        <!-- More Research Dropdown moved here -->
+        <div class="dropdown">
+          <button class="more-research-btn dropdown-toggle">
+            <span>More Research</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="dropdown-content">
+            <a href="https://video-mme.github.io/home_page.html" target="_blank">Video-MME</a>
+            <a href="https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models"
+              target="_blank">Awesome-MLLM</a>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Top Navigation Removed -->
+
+    <!-- Hero Section -->
 
     <!-- Hero Section -->
     <header class="hero-header">
@@ -50,16 +66,17 @@
       </h1>
 
       <div class="authors-list">
-        <span class="author-name">Ruoliu Yang<sup>1</sup>,</span>
-        <span class="author-name">Chu Wu<sup>1</sup>,</span>
-        <span class="author-name">Caifeng Shan<sup>1</sup>,</span>
-        <span class="author-name">Ran He<sup>2</sup>,</span>
-        <span class="author-name">Chaoyou Fu<sup>1</sup></span>
+        <span class="author-name">Ruoliu Yang<sup class="inst-1">1</sup>,</span>
+        <span class="author-name">Chu Wu<sup class="inst-1">1</sup>,</span>
+        <span class="author-name">Caifeng Shan<sup class="inst-1">1</sup>,</span>
+        <span class="author-name">Ran He<sup class="inst-2">2</sup>,</span>
+        <span class="author-name">Chaoyou Fu<sup class="inst-1">1</sup></span>
       </div>
 
       <div class="institutions-list">
-        <span class="institution-name"><sup>1</sup>Nanjing University</span>
-        <span class="institution-name"><sup>2</sup>Institute of Automation, Chinese Academy of Sciences</span>
+        <span class="institution-name"><sup class="inst-1">1</sup>Nanjing University</span>
+        <span class="institution-name"><sup class="inst-2">2</sup>Institute of Automation, Chinese Academy of
+          Sciences</span>
       </div>
 
       <div class="link-buttons">
@@ -82,8 +99,6 @@
         <p class="introduction-text">
           <strong>VideoDetective</strong> is a plug-and-play inference framework for long-video understanding that
           integrates <strong>extrinsic query relevance</strong> with <strong>intrinsic video structure</strong>.
-        </p>
-        <p class="introduction-text">
           By modeling the video as a <strong>Spatio-Temporal Affinity Graph</strong>, it performs an iterative
           <strong>Hypothesis-Verification-Refinement</strong> loop to propagate relevance signals from sparse
           observations to the entire video. This allows the model to "See Less but Know More", accurately localizing
