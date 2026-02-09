@@ -5,8 +5,6 @@
 [![Project Page](https://img.shields.io/badge/Web-Project_Page-yellow.svg)](https://yangruoliu.github.io/VideoDetective)
 
 **VideoDetective** is a plug-and-play inference framework for long-video understanding that integrates extrinsic query relevance with intrinsic video structure.
-<a id="framework"></a>
-### 🧩 Framework
 
 ![Figure 1. Overview of the VideoDetective framework.](images/figure1_final_final.png)
 
@@ -21,7 +19,6 @@ This repository contains a runnable demo script: `scripts/test_run.py`.
 - [Overview](#overview)
   - [Motivation](#motivation)
   - [Key ideas](#key-ideas)
-  - [Framework](#framework)
 - [Results](#results)
 - [Example](#example)
 - [Installation](#installation)
