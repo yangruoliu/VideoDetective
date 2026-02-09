@@ -5,7 +5,9 @@
 [![Project Page](https://img.shields.io/badge/Web-Project_Page-yellow.svg)](https://yangruoliu.github.io/VideoDetective)
 
 
-**VideoDetective** is a *plug-and-play* inference framework for **long-video multiple-choice question answering**.
+**VideoDetective** is a *plug-and-play* inference framework for **long-video question answering**.
+<a id="framework"></a>
+### 🧩 Framework
 
 ![Figure 1. Overview of the VideoDetective framework.](images/figure1_final_final.png)
 
@@ -47,8 +49,7 @@ Long video understanding remains challenging for multimodal large language model
 - **Visual–temporal affinity graph**: divide a video into segments and represent them as a visual–temporal affinity graph built from visual similarity and temporal proximity.
 - **Hypothesis–Verification–Refinement loop**: estimate relevance scores of observed segments to the query and propagate them to unseen segments, yielding a global relevance distribution that guides localization of the most critical segments for final answering with sparse observation.
 
-<a id="framework"></a>
-### 🧩 Framework
+
 
 
 <a id="results"></a>
