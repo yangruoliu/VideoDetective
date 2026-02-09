@@ -1,5 +1,5 @@
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap');
+/* Fonts - Classic Academic Serif */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
   --bg: #f8fafc;
@@ -28,8 +28,8 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
-  /* Fonts */
-  --font-heading: 'Outfit', sans-serif;
+  /* Fonts - Classic Academic Style */
+  --font-heading: 'Libre Baskerville', 'Georgia', 'Times New Roman', serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
   --max-width: 1000px;
@@ -75,10 +75,11 @@ h2,
 h3 {
   font-family: var(--font-heading);
   color: #0f172a;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
+  /* Wider for serif */
   margin-top: 2.5rem;
-  /* Reduced margin */
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 h1 {
@@ -86,30 +87,52 @@ h1 {
 }
 
 h2 {
-  font-size: 1.75rem;
-  /* Slightly smaller for elegance */
-  font-weight: 700;
-  padding-bottom: 0.5rem;
-  position: relative;
-  display: inline-block;
+  font-size: 2.4rem;
+  /* Significantly larger */
+  font-weight: 600;
+  text-align: center;
+  display: block;
+  background-color: #f3f4f6;
+  /* Full-width light gray band */
+  padding: 1.25rem 0;
+  margin-left: calc(-50vw + 50%);
+  /* Extend to full viewport width */
+  margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+  margin-bottom: 2rem;
+  /* text-transform: uppercase; REMOVED to allow small-caps to distinguish first letter */
+  font-variant: small-caps;
+  /* Small caps: First letter Big Cap, others Small Cap */
+  letter-spacing: 0.05em;
+  font-family: var(--font-heading);
+  /* Serif */
 }
 
-/* Subtle underline decoration for H2 */
+/* Remove the old blue underline */
 h2::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 4px;
-  background: var(--primary);
-  border-radius: 2px;
-  margin-top: 6px;
+  display: none;
 }
 
 h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-top: 1.5rem;
-  color: #334155;
+  font-family: var(--font-body);
+  /* Switch to Sans-Serif (Inter) as requested */
+  font-size: 1.75rem;
+  /* Larger and distinct */
+  font-weight: 800;
+  /* Extra Bold */
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  color: #111827;
+  /* Darker black */
+  text-align: center;
+  border-bottom: 2px solid #e5e7eb;
+  /* Slightly thicker border for emphasis */
+  padding-bottom: 0.5rem;
+  display: inline-block;
+  width: 100%;
+  letter-spacing: -0.02em;
+  /* Tighten slightly for display font look */
 }
 
 p {
@@ -328,14 +351,16 @@ section:nth-of-type(5) {
 
 .title-main {
   font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 3.5rem;
-  /* Adjusted for tighter feel */
-  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  font-size: 3.8rem;
+  /* Larger as requested */
+  color: #0f172a;
+  -webkit-text-fill-color: unset;
+  /* Remove gradient */
+  background: none;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  /* Wider letter spacing as requested */
 }
 
 .title-icon {
@@ -441,20 +466,19 @@ section:nth-of-type(5) {
 }
 
 
-/* Content Cards (Abstract, Figures, Table) */
+/* Content Cards - Now transparent, no boxes */
 .content-card {
-  background-color: var(--bg-card);
-  padding: 2.5rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  margin-bottom: 2.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: transparent;
+  padding: 1.5rem 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 2rem;
 }
 
 .content-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  transform: none;
+  box-shadow: none;
 }
 
 /* Introduction Specifics */
