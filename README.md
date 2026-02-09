@@ -139,7 +139,7 @@ python scripts/test_run.py \
 
 For each run, you should get:
 
-- **Full results**: `output/<video_id>_results.json` (includes prediction, optional GT, and `debug_info`)
+- **Full results**: `output/<video_id>_results.json` (includes prediction and entire processing information)
 
 <a id="core-api"></a>
 ## 🧪 Core API
